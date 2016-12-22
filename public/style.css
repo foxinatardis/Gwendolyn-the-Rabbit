@@ -1,0 +1,43 @@
+body {
+	background-color: #ee3399;
+	margin: 0;
+}
+
+header {
+	background-color: #111;
+	width: 100%;
+	height: 10vh;
+	margin: 0;
+	color: #ee3399;
+}
+
+header>h1 {
+	/*text-align: center;*/
+	display: inline-block;
+	float: left;
+	font: 30px fantasy;
+	margin: 0 0 0 5px;
+	line-height: 10vh;
+}
+
+.control {
+	display: inline-block;
+	float: right;
+	margin-top: 3vh;
+	margin-right: 5px;
+}
+
+canvas {
+	margin: auto;
+	margin-top: 10px;
+	border-radius: 5px;
+	/*box-shadow: 0 0 5px rgb(10,10,10);*/
+}
+
+/*.controls {
+	float: left;
+}
+
+.controls>input {
+	display: block;
+}*/

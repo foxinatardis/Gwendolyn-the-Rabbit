@@ -1,12 +1,13 @@
 var playState = {
 	create: function() {
 		game.physics.arcade.gravity.y = 500;
+		scrollSpeed = -50;
 
 		bg = game.add.tileSprite(0, 0, 800, 600, 'background');
 		bg.scale.setTo(3, 2);
 
-		scoreText = game.add.text(16, 16, 'score: ' + score, { fontSize: '32px', fill: '#222222' });
-		livesText = game.add.text(580, 16, 'score: 0', { fontSize: '32px', fill: '#222222' });
+		scoreText = game.add.text(16, 16, 'Score: ' + score, { font: '32px Fantasy', fill: '#222222' });
+		livesText = game.add.text(670, 16, 'Lives: ' + lives, { font: '32px Fantasy', fill: '#222222' });
 		livesText.text = "Lives: " + lives;
 
 		platforms = game.add.physicsGroup();
@@ -44,21 +45,20 @@ var playState = {
 		player.animations.add('right', [5, 6, 7, 8], 10, true);
 
 		//snow machine
-		emitter = game.add.emitter(600, 0, 300);
-		emitter.width = 1000;
-		emitter.makeParticles('snowflake', 0, 2000, false, false);
+		emitter = game.add.emitter(600, 0);
+		emitter.width = 1500;
+		emitter.makeParticles('snowflake', 0, 1500, false, false);
 		emitter.particleDrag.y = 400;
-		emitter.maxParticleSpeed.x = scrollSpeed;
-		emitter.minParticleSpeed.x = scrollSpeed - 50;
-		emitter.maxParticleSpeed.y = 50;
+		emitter.maxParticleSpeed.x = scrollSpeed - 25;
+		emitter.minParticleSpeed.x = scrollSpeed - 75;
 		emitter.maxParticleScale = 2;
 		emitter.lifespan = 4000;
-		emitter.gravity = -10;
-		emitter.bounce = 0;
-		// emitter.outOfBoundsKill = true;
+		emitter.gravity = -15;
 
 		cursors = game.input.keyboard.createCursorKeys();
-		space = game.input.keyboard.addKey(32);
+		if(!music) {
+			music = game.sound.play('music', volume.music, true);
+		}
 
 	},
 
@@ -94,8 +94,10 @@ var playState = {
 
 		if(cursors.up.isDown && player.body.touching.down && hitPlatform && !eating) {
 			player.body.velocity.y = -300;
+			game.sound.play('jump', volume.sfx);
 		} else if (cursors.up.isDown && jumpCount === 1) {
 				player.body.velocity.y = -270;
+				game.sound.play('jump', volume.sfx);
 				jumpCount = 2;
 		} else if (cursors.down.isDown && touchCarrot) {
 			eatCarrot();

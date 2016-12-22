@@ -6,39 +6,32 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Document</title>
 	<script type="text/javascript" src="js/phaser.min.js"></script>
+	<!-- <script src="./js/jQueryMini.js" charset="utf-8"></script> -->
 	<script src="./js/load.js" charset="utf-8"></script>
 	<script src="./js/menu.js" charset="utf-8"></script>
 	<script src="./js/play.js" charset="utf-8"></script>
 	<script src="./js/gameover.js" charset="utf-8"></script>
 	<script src="./js/dead.js" charset="utf-8"></script>
+	<link rel="stylesheet" href="./style.css">
 
 </head>
 <body>
 
+<header>
+	<h1>Gwendolyn the Rabbit</h1>
+	<div class="control">Music: <input type="range" min="0" max="10" id="music" value="8" oninput="setMusicVol(this.value)" onchange="setMusicVol(this.value)"></div>
+	<div class="control">SFX: <input type="range" min="0" max="10" id="sfx" value="3" oninput="setSFXVol(this.value)" onchange="setSFXVol(this.value)"></div>
+</header>
+<div class="">
+	<div class="controls">
 
-<script type="text/javascript">
-	game.state.add('load', loadState);
-	game.state.add('menu', menuState);
-	game.state.add('play', playState);
-	game.state.add('gameover', gameoverState);
-	game.state.add('dead', deadState);
-	game.state.start('load');
 
-	window.onkeyup = function(e) {
-		var key = e.keyCode;
+	</div>
+	<div id="gwen"></div>
+</div>
 
-		if (key == 32) {
-			if(game.state.current === "play") {
-				game.paused = !game.paused;
-			} else {
-				game.state.start('play')
-			}
-		}else if (key == 13) {
-			score = 0;
-			lives = 3;
-			game.state.start('play');
-		}
-	}
-</script>
+
+
+<script src="./js/main.js" charset="utf-8"></script>
 </body>
 </html>

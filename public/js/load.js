@@ -1,6 +1,6 @@
 // contains the load state along with global variables an functions for use in the game.
 
-var game = new Phaser.Game(800, 600, Phaser.AUTO, '');
+var game = new Phaser.Game(800, 600, Phaser.AUTO, '#gwen');
 var lastY = 300;
 var lastPlatform;
 var scrollSpeed = -50;
@@ -11,6 +11,12 @@ var jumpCount = 0;
 var score = 0;
 var timer = 0;
 var lives = 3;
+var volume = {
+	music: 0.8,
+	sfx: 0.2
+};
+var music;
+var highScore = 0;
 
 var loadState = {
 	preload: function() {
@@ -22,6 +28,10 @@ var loadState = {
 		game.load.image('snowman', '/stuff/snowman.png');
 		game.load.image('snowflake', 'stuff/snowflake.png');
 		game.load.image('bigBunny', 'stuff/bunny-big.png');
+		game.load.audio('jump', './sounds/jumping.wav', true);
+		game.load.audio('snow-on-cement', './sounds/snow-on-cement.wav', true);
+		game.load.audio('carrot-nom', './sounds/carrot-nom.wav', true);
+		game.load.audio('music', './sounds/The_Secret_Garden.mp3', true);
 
 		game.load.spritesheet('bunny', '/stuff/bunny-bow.png', 32, 48);
 	},
@@ -58,6 +68,7 @@ function eatCarrot() {
 	currentCarrot.kill();
 	currentCarrot = eaten.create(x, y-95, 'carrot');
 	currentCarrot.body.velocity.x = scrollSpeed;
+	game.sound.play('carrot-nom', volume.sfx, false);
 	setTimeout(function() {
 		currentCarrot.kill();
 		currentCarrot = eaten.create(x - 15, y - 25, 'carrot-top');
@@ -68,6 +79,7 @@ function eatCarrot() {
 		setScrollSpeed(10);
 		scoreText.text = 'Score: ' + score;
 		eating = false;
+		game.sound.play('carrot-nom', volume.sfx, false);
 	}, 300);
 }
 
@@ -92,12 +104,15 @@ function fightSnowman(player, snowman) {
 		// squash snowman to half scale
 		if (snowman.scale.y === 1) {
 			snowman.scale.y = 0.5;
+			game.sound.play('snow-on-cement', volume.sfx, false);
 			snowman.body.position.y += snowman.body.halfHeight;
+			snowman.body.velocity.x = scrollSpeed;
 			explodeSnowman(snowman);
 			player.body.velocity.y = -150;
 		} else {
 			// finish killing snowman
 			explodeSnowman(snowman);
+			game.sound.play('snow-on-cement', volume.sfx, false);
 			snowman.kill();
 			player.body.velocity.y = -150;
 			setScrollSpeed(-2);
@@ -130,7 +145,6 @@ function explodeSnowman(snowman) {
 
 
 function setFriction(player, platform) {
-	player.body.angularVelocity = 0;
 
 	if (platform.key === "ledge") {
 		if (player.body.velocity.x > 10) {

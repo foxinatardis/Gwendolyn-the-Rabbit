@@ -1,8 +1,15 @@
 var gameoverState = {
 	bunny: "",
 	create: function() {
+
+		if (score > highScore) {
+			highScore = score;
+			window.localStorage.highScore = highScore;
+		}
+
 		var nameLabel = game.add.text(270, 80, 'Game Over', {font: '50px Arial', fill: '#dd5599'});
-		game.add.text(80, 500, 'Your Score: ' + score, {font: '30px Arial', fill: '#dd5599'});
+		game.add.text(80, 450, 'Your Score: ' + score, {font: '30px Arial', fill: '#dd5599'});
+		game.add.text(80, 500, 'Your Highest Score: ' + highScore, {font: '30px Arial', fill: '#dd5599'});
 		game.add.text(80, 550, 'Press "Enter" to play again!', {font: '30px Arial', fill: '#dd5599'});
 		this.bunny = game.add.sprite(0, 0, 'bigBunny');
 		game.physics.arcade.enable(this.bunny);
