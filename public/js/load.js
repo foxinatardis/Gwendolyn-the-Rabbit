@@ -37,7 +37,7 @@ var loadState = {
 		game.load.audio('jump', './sounds/jumping.wav', true);
 		game.load.audio('snow-on-cement', './sounds/snow-on-cement.wav', true);
 		game.load.audio('carrot-nom', './sounds/carrot-nom.wav', true);
-		game.load.audio('music', './sounds/The_Secret_Garden.mp3', true);
+		game.load.audio('music', './sounds/The_Secret_Garden1.wav', true);
 
 		game.load.spritesheet('bunny', '/stuff/bunny-bow.png', 32, 48);
 	},
