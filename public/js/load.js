@@ -38,6 +38,7 @@ var game = new Phaser.Game(800, 600, format, '#gwen');
 
 var loadState = {
 	preload: function() {
+		game.add.text(300, 300, 'Loading...', {font: '50px Fantasy', fill: '#dd5599'});
 		game.load.image('background', '/stuff/sky1.png');
 		game.load.image('ledge', '/stuff/snow-ledge.png');
 		game.load.image('ice-ledge', '/stuff/ice-platform1.png');
@@ -56,6 +57,7 @@ var loadState = {
 	create: function() {
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		game.sound.boot();
+
 		sounds = {
 			music: game.sound.play('music', volume.music, true),
 			jump: game.sound.add('jump', volume.sfx),
