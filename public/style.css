@@ -31,13 +31,16 @@ canvas {
 	margin: auto;
 	margin-top: 10px;
 	border-radius: 5px;
-	/*box-shadow: 0 0 5px rgb(10,10,10);*/
+	box-shadow: 0 0 5px rgb(10,10,10);
 }
 
-/*.controls {
-	float: left;
+footer {
+	width: 100%;
+	margin: auto;
+	position: absolute;
+	bottom: 0;
 }
-
-.controls>input {
-	display: block;
-}*/
+footer>p {
+	text-align: center;
+	color: white;
+}

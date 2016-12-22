@@ -1,6 +1,6 @@
 // contains the load state along with global variables an functions for use in the game.
 
-var game = new Phaser.Game(800, 600, Phaser.AUTO, '#gwen');
+
 var lastY = 300;
 var lastPlatform;
 var scrollSpeed = -50;
@@ -22,13 +22,19 @@ var sounds = {
 	snow_on_cement: ""
 };
 var music;
+var format = Phaser.AUTO;
 var highScore = 0;
 
 if(navigator.userAgent.includes("Chrome")) {
 	music = "./sounds/The_Secret_Garden.mp3";
+} else if (navigator.userAgent.includes("Firefox")) {
+	format = Phaser.CANVAS;
+	music = "./sounds/The_Secret_Garden.mp3";
 } else {
 	music = "./sounds/The_Secret_Garden1.wav";
 }
+
+var game = new Phaser.Game(800, 600, format, '#gwen');
 
 var loadState = {
 	preload: function() {
