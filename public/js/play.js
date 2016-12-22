@@ -56,10 +56,6 @@ var playState = {
 		emitter.gravity = -15;
 
 		cursors = game.input.keyboard.createCursorKeys();
-		if(!music) {
-			music = game.sound.play('music', volume.music, true);
-		}
-
 	},
 
 	update: function() {
@@ -94,12 +90,13 @@ var playState = {
 
 		if(cursors.up.isDown && player.body.touching.down && hitPlatform && !eating) {
 			player.body.velocity.y = -300;
-			game.sound.play('jump', volume.sfx);
+			sounds.jump.play();
 		} else if (cursors.up.isDown && jumpCount === 1) {
 				player.body.velocity.y = -270;
-				game.sound.play('jump', volume.sfx);
+				sounds.jump.play();
 				jumpCount = 2;
-		} else if (cursors.down.isDown && touchCarrot) {
+		}
+		if (cursors.down.isDown && touchCarrot) {
 			eatCarrot();
 		}
 		timer++;

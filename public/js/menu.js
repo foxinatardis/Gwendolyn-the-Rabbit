@@ -8,5 +8,6 @@ var menuState = {
 		game.add.text(80, 230, 'Press "UP" to jump, press again to DoubleJump', {font: '30px Arial', fill: '#dd5599'});
 		game.add.text(80, 280, 'Press "DOWN" to eat carrots', {font: '30px Arial', fill: '#dd5599'});
 		game.add.text(80, 330, 'Press "SPACE" to pause', {font: '30px Arial', fill: '#dd5599'});
+		sounds.music.play();
 	}
 };

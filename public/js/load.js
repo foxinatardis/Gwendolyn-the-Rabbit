@@ -15,6 +15,12 @@ var volume = {
 	music: 0.8,
 	sfx: 0.2
 };
+var sounds = {
+	music: "",
+	jump: "",
+	carrot_nom: "",
+	snow_on_cement: ""
+};
 var music;
 var highScore = 0;
 
@@ -38,6 +44,12 @@ var loadState = {
 	create: function() {
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		game.state.start('menu');
+		sounds = {
+			music: game.sound.add('music', volume.music, true),
+			jump: game.sound.add('jump', volume.sfx),
+			carrot_nom: game.sound.add('carrot-nom', volume.sfx, false),
+			snow_on_cement: game.sound.add('snow-on-cement', volume.sfx, false)
+		};
 	}
 };
 
@@ -68,7 +80,7 @@ function eatCarrot() {
 	currentCarrot.kill();
 	currentCarrot = eaten.create(x, y-95, 'carrot');
 	currentCarrot.body.velocity.x = scrollSpeed;
-	game.sound.play('carrot-nom', volume.sfx, false);
+	sounds.carrot_nom.play();
 	setTimeout(function() {
 		currentCarrot.kill();
 		currentCarrot = eaten.create(x - 15, y - 25, 'carrot-top');
@@ -79,7 +91,7 @@ function eatCarrot() {
 		setScrollSpeed(10);
 		scoreText.text = 'Score: ' + score;
 		eating = false;
-		game.sound.play('carrot-nom', volume.sfx, false);
+		sounds.carrot_nom.play();
 	}, 300);
 }
 
@@ -104,7 +116,7 @@ function fightSnowman(player, snowman) {
 		// squash snowman to half scale
 		if (snowman.scale.y === 1) {
 			snowman.scale.y = 0.5;
-			game.sound.play('snow-on-cement', volume.sfx, false);
+			sounds.snow_on_cement.play();
 			snowman.body.position.y += snowman.body.halfHeight;
 			snowman.body.velocity.x = scrollSpeed;
 			explodeSnowman(snowman);
@@ -112,7 +124,7 @@ function fightSnowman(player, snowman) {
 		} else {
 			// finish killing snowman
 			explodeSnowman(snowman);
-			game.sound.play('snow-on-cement', volume.sfx, false);
+			sounds.snow_on_cement.play();
 			snowman.kill();
 			player.body.velocity.y = -150;
 			setScrollSpeed(-2);

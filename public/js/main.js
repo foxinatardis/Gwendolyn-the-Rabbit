@@ -30,11 +30,14 @@ window.onkeyup = function(e) {
 
 function setMusicVol(value) {
 	volume.music = value / 10;
-	if(music) music.volume = volume.music;
+	sounds.music.volume = volume.music;
 }
 
 function setSFXVol(value) {
 	volume.sfx = value / 10;
+	sounds.jump.volume = volume.sfx;
+	sounds.carrot_nom.volume = volume.sfx;
+	sounds.snow_on_cement.volume = volume.sfx;
 }
 
 if (!window.localStorage.highScore) {
