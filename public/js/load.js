@@ -24,6 +24,12 @@ var sounds = {
 var music;
 var highScore = 0;
 
+if(navigator.userAgent.includes("Chrome")) {
+	music = "./sounds/The_Secret_Garden.mp3";
+} else {
+	music = "./sounds/The_Secret_Garden1.wav";
+}
+
 var loadState = {
 	preload: function() {
 		game.load.image('background', '/stuff/sky1.png');
@@ -37,7 +43,7 @@ var loadState = {
 		game.load.audio('jump', './sounds/jumping.wav', true);
 		game.load.audio('snow-on-cement', './sounds/snow-on-cement.wav', true);
 		game.load.audio('carrot-nom', './sounds/carrot-nom.wav', true);
-		game.load.audio('music', './sounds/The_Secret_Garden1.wav', true);
+		game.load.audio('music', music, true);
 
 		game.load.spritesheet('bunny', '/stuff/bunny-bow.png', 32, 48);
 	},

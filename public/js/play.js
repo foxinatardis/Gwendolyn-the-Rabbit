@@ -79,10 +79,22 @@ var playState = {
 
 		if(cursors.left.isDown && !eating) {
 			player.body.velocity.x = -150;
-			player.animations.play('left');
+
+			if (jumpCount == 1) {
+				player.animations.stop();
+				player.frame = 3;
+			} else {
+				player.animations.play('left');
+			}
 		} else if (cursors.right.isDown && !eating) {
 			player.body.velocity.x = 150;
-			player.animations.play('right');
+
+			if (jumpCount == 1) {
+				player.animations.stop();
+				player.frame = 6;
+			} else {
+				player.animations.play('right');
+			}
 		} else {
 			player.animations.stop();
 			player.frame = 4;
@@ -98,6 +110,10 @@ var playState = {
 		}
 		if (cursors.down.isDown && touchCarrot) {
 			eatCarrot();
+		} else if (cursors.down.isDown && jumpCount > 0) {
+			player.body.acceleration.y = 10000;
+		} else if (!cursors.down.isDown) {
+			player.body.acceleration.y = 0;
 		}
 		timer++;
 
