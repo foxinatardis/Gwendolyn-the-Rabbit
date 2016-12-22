@@ -1,9 +1,10 @@
+game.state.add('boot', bootState);
 game.state.add('load', loadState);
 game.state.add('menu', menuState);
 game.state.add('play', playState);
 game.state.add('gameover', gameoverState);
 game.state.add('dead', deadState);
-game.state.start('load');
+game.state.start('boot');
 
 window.onkeyup = function(e) {
 	var key = e.keyCode;
