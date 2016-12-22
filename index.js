@@ -2,6 +2,7 @@
 
 var express = require('express');
 var app = express();
+var PORT = process.env.PORT;
 
 app.get('/', (req, res) => {
 	res.sendFile(__dirname + '/index.html');
@@ -9,6 +10,6 @@ app.get('/', (req, res) => {
 
 app.use(express.static(__dirname + '/public'));
 
-app.listen(80, () => {
-	console.log("Server started on port 80");
+app.listen(PORT, () => {
+	console.log("Server started on port " + PORT);
 });
