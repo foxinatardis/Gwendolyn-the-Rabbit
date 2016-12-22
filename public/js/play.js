@@ -120,6 +120,7 @@ var playState = {
 		if(player.body.position.y > 600) {
 			playerFall();
 		}
+		killSnowmen();
 
 	}
 };

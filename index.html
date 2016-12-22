@@ -7,12 +7,12 @@
 	<title>Gwendolyn Rabbit</title>
 	<script type="text/javascript" src="js/phaser.min.js"></script>
 	<!-- <script src="./js/jQueryMini.js" charset="utf-8"></script> -->
-	<script src="./js/boot.js" charset="utf-8"></script>
+	<!-- <script src="./js/boot.js" charset="utf-8"></script>
 	<script src="./js/load.js" charset="utf-8"></script>
 	<script src="./js/menu.js" charset="utf-8"></script>
 	<script src="./js/play.js" charset="utf-8"></script>
 	<script src="./js/gameover.js" charset="utf-8"></script>
-	<script src="./js/dead.js" charset="utf-8"></script>
+	<script src="./js/dead.js" charset="utf-8"></script> -->
 	<link rel="stylesheet" href="./style.css">
 	<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
 	<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
@@ -22,22 +22,25 @@
 
 <header>
 	<h1>Gwendolyn the Rabbit</h1>
-	<div class="control">Music: <input type="range" min="0" max="10" id="music" value="8" oninput="setMusicVol(this.value)" onchange="setMusicVol(this.value)"></div>
-	<div class="control">SFX: <input type="range" min="0" max="10" id="sfx" value="3" oninput="setSFXVol(this.value)" onchange="setSFXVol(this.value)"></div>
+
+	<div class="control">Music: <input type="range" min="0" max="10" id="music" value="7" oninput="setMusicVol(this.value)" onchange="setMusicVol(this.value)"></div>
+	<div class="control">SFX: <input type="range" min="0" max="10" id="sfx" value="5" oninput="setSFXVol(this.value)" onchange="setSFXVol(this.value)"></div>
+	<button class="control" id="in">Zoom In</button>
+	<button class="control" id="out">Zoom Out</button>
 </header>
-<div class="">
-	<div class="controls">
 
-
-	</div>
-	<div id="gwen"></div>
-</div>
+<div id="gwen"></div>
 
 <footer>
 	<p>Currently it is recommended to play "Gwendolyn the Rabbit" in Chrome or Safari. Additional browser support slated for future development.</p>
 	<p>To learn more about the developer (or to hire him) visit <a href="http://adamb.me" target="_blank">Adam Belliveau</a>'s portfolio page.</p>
 </footer>
-
+<script src="./js/boot.js" charset="utf-8"></script>
+<script src="./js/load.js" charset="utf-8"></script>
+<script src="./js/menu.js" charset="utf-8"></script>
+<script src="./js/play.js" charset="utf-8"></script>
+<script src="./js/gameover.js" charset="utf-8"></script>
+<script src="./js/dead.js" charset="utf-8"></script>
 <script src="./js/main.js" charset="utf-8"></script>
 </body>
 </html>

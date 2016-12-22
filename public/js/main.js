@@ -25,9 +25,27 @@ window.onkeyup = function(e) {
 		} else {
 			game.scale.stopFullScreen();
 		}
-
+	} else if (key == 73) {
+		zoom += 0.1;
+		document.getElementById('gwen').style.zoom = zoom;
+	} else if (key == 79) {
+		zoom -= 0.1;
+		document.getElementById('gwen').style.zoom = zoom;
 	}
 };
+
+document.getElementById('in').addEventListener('click', zoomIn);
+document.getElementById('out').addEventListener('click', zoomOut);
+
+function zoomIn() {
+	zoom += 0.1;
+	document.getElementById('gwen').style.zoom = zoom;
+}
+
+function zoomOut() {
+	zoom -= 0.1;
+	document.getElementById('gwen').style.zoom = zoom;
+}
 
 function setMusicVol(value) {
 	volume.music = value / 10;

@@ -1,6 +1,7 @@
 body {
 	background-color: #ee3399;
 	margin: 0;
+	zoom: 1;
 }
 
 header {
@@ -12,7 +13,6 @@ header {
 }
 
 header>h1 {
-	/*text-align: center;*/
 	display: inline-block;
 	float: left;
 	font: 30px fantasy;
@@ -27,9 +27,23 @@ header>h1 {
 	margin-right: 5px;
 }
 
-canvas {
-	margin: auto;
+#gwen {
+	/*padding: auto;*/
 	margin-top: 10px;
+	background-color: #ee3399;
+	zoom: 1;
+}
+
+button.control {
+	margin-top: 3.5vh;
+	margin-right: 10px;
+}
+
+canvas {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	border-radius: 5px;
 	box-shadow: 0 0 5px rgb(10,10,10);
 }
@@ -39,6 +53,8 @@ footer {
 	margin: auto;
 	position: absolute;
 	bottom: 0;
+	z-index: -1;
+	float: right;
 }
 footer>p {
 	text-align: center;
