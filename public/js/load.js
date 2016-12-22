@@ -55,13 +55,13 @@ var loadState = {
 	},
 	create: function() {
 		game.physics.startSystem(Phaser.Physics.ARCADE);
-		game.state.start('menu');
 		sounds = {
 			music: game.sound.add('music', volume.music, true),
 			jump: game.sound.add('jump', volume.sfx),
 			carrot_nom: game.sound.add('carrot-nom', volume.sfx, false),
 			snow_on_cement: game.sound.add('snow-on-cement', volume.sfx, false)
 		};
+		game.state.start('menu');
 	}
 };
 
