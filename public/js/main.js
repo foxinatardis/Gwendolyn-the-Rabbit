@@ -18,19 +18,8 @@ window.onkeyup = function(e) {
 	} else if (key == 13 && (game.state.current === "menu" || game.state.current === "gameover")) {
 		score = 0;
 		lives = 3;
+		nextLife = 5000;
 		game.state.start('play');
-	} else if (key == 27) {
-		if (!game.scale.isFullScreen) {
-			game.scale.startFullScreen();
-		} else {
-			game.scale.stopFullScreen();
-		}
-	} else if (key == 73) {
-		zoom += 0.1;
-		document.getElementById('gwen').style.zoom = zoom;
-	} else if (key == 79) {
-		zoom -= 0.1;
-		document.getElementById('gwen').style.zoom = zoom;
 	}
 };
 
@@ -38,12 +27,12 @@ document.getElementById('in').addEventListener('click', zoomIn);
 document.getElementById('out').addEventListener('click', zoomOut);
 
 function zoomIn() {
-	zoom += 0.1;
+	zoom = Math.min((zoom + 0.1), 1.8);
 	document.getElementById('gwen').style.zoom = zoom;
 }
 
 function zoomOut() {
-	zoom -= 0.1;
+	zoom = Math.max((zoom - 0.1), 0.2);
 	document.getElementById('gwen').style.zoom = zoom;
 }
 
