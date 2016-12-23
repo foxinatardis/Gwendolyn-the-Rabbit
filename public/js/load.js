@@ -25,6 +25,7 @@ var music;
 var format = Phaser.AUTO;
 var highScore = 0;
 var zoom = 1;
+var nextLife = 5000;
 
 if(navigator.userAgent.includes("Chrome")) {
 	music = "./sounds/The_Secret_Garden.mp3";
@@ -167,19 +168,20 @@ function killSnowmen() {
 }
 
 function explodeSnowman(snowman) {
-	squashedSnowman = game.add.emitter(snowman.body.position.x + snowman.body.halfWidth, snowman.body.position.y + snowman.body.halfHeight, 20);
-	squashedSnowman.width = snowman.body.width;
-	squashedSnowman.minParticleScale = 2;
-	squashedSnowman.maxParticleScale = 3;
 	squashedSnowman.makeParticles('snowflake', 0, 10, true, false);
-	squashedSnowman.setAllChildren('enableBody', true);
-	squashedSnowman.setAllChildren('body.acceleration.y', -450);
-	squashedSnowman.bounce.y = 0.1;
-	squashedSnowman.minParticleSpeed.y = -100;
-	squashedSnowman.maxParticleSpeed.y = -50;
-	squashedSnowman.minParticleSpeed.x = -25;
-	squashedSnowman.maxParticleSpeed.x = 25;
-	squashedSnowman.start(true, 10000, 50, 20, 20);
+	squashedSnowman.minParticleSpeed.y = player.body.velocity.y - 25;
+	squashedSnowman.maxParticleSpeed.y = player.body.velocity.y;
+	squashedSnowman.minParticleSpeed.x = -50;
+	squashedSnowman.maxParticleSpeed.x = 50;
+	squashedSnowman.emitX = snowman.x + snowman.body.halfWidth;
+	squashedSnowman.emitY = snowman.y;
+	squashedSnowman.start(true, 15000, 50, 20, 20);
+}
+
+function collectSnowball(player, snowball) {
+	snowball.kill();
+	score += 10;
+	scoreText.text = "Score: " + score;
 }
 
 

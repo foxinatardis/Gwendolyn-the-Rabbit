@@ -55,8 +55,37 @@ footer {
 	bottom: 0;
 	z-index: -1;
 	float: right;
+	background-color: #ee3399;
 }
 footer>p {
 	text-align: center;
 	color: white;
+}
+
+nav {
+	background-color: #111;
+	width: 100%;
+}
+
+nav>div {
+	/*text-align: center;*/
+	width: 100%;
+	/*margin: auto;*/
+}
+
+nav>div>a {
+	margin: 0 10px 0 10px;
+	color: white;
+}
+
+.instruction {
+	margin-left: 5px;
+	color: white;
+}
+
+li {
+	margin-top: 3px;
+}
+.instruction > p {
+	margin-left: 10px;
 }

@@ -12,7 +12,7 @@ window.onkeyup = function(e) {
 	if (key == 32) {
 		if(game.state.current === "play") {
 			game.paused = !game.paused;
-		} else {
+		} else if (lives > 0){
 			game.state.start('play');
 		}
 	} else if (key == 13 && (game.state.current === "menu" || game.state.current === "gameover")) {

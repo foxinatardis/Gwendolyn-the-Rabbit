@@ -55,6 +55,15 @@ var playState = {
 		emitter.lifespan = 4000;
 		emitter.gravity = -15;
 
+		squashedSnowman = game.add.emitter(0, 0, 20);
+		squashedSnowman.width = 30;
+		squashedSnowman.minParticleScale = 2;
+		squashedSnowman.maxParticleScale = 3;
+
+		squashedSnowman.setAllChildren('enableBody', true);
+		// squashedSnowman.setAllChildren('body.acceleration.y', -450);
+		squashedSnowman.bounce.y = 0.1;
+
 		cursors = game.input.keyboard.createCursorKeys();
 	},
 
@@ -64,6 +73,7 @@ var playState = {
 		hitSnowman = game.physics.arcade.collide(player, snowmen, fightSnowman);
 		game.physics.arcade.collide(snowmen, platforms, moveSnowman);
 		game.physics.arcade.collide(squashedSnowman, platforms);
+		game.physics.arcade.overlap(player, squashedSnowman, collectSnowball);
 
 		if (timer % 10 === 0) setNextLedge();
 
@@ -119,6 +129,11 @@ var playState = {
 
 		if(player.body.position.y > 600) {
 			playerFall();
+		}
+		if(score > nextLife){
+			lives++;
+			livesText.text = "Lives: " + lives;
+			nextLife *= 2;
 		}
 		killSnowmen();
 
