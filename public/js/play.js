@@ -36,7 +36,7 @@ var playState = {
 
 		snowmen.setAll('body.velocity.x', scrollSpeed);
 
-		player = game.add.sprite(10, 500, 'bunny');
+		player = game.add.sprite(252, 400, 'bunny');
 
 		game.physics.arcade.enable(player);
 

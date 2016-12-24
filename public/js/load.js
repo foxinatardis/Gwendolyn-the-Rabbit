@@ -76,6 +76,11 @@ function setScrollSpeed(x) {
 	platforms.setAll('body.velocity.x', scrollSpeed);
 	emitter.maxParticleSpeed.x = scrollSpeed - 25;
 	emitter.minParticleSpeed.x = scrollSpeed - 75;
+	if (scrollSpeed < -300) {
+		emitter.particleDrag.y = 0;
+	} else if (scrollSpeed < -200) {
+		emitter.particleDrag.y = 200;
+	}
 }
 
 function setCarrot(play, car) {
