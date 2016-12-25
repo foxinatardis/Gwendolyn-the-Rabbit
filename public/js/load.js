@@ -105,7 +105,7 @@ function eatCarrot() {
 	sounds.carrot_nom.play();
 	setTimeout(function() {
 		currentCarrot.kill();
-		currentCarrot = eaten.create(x - 15, y - 25, 'carrot-top');
+		currentCarrot = eaten.create(player.x - 30, y - 25, 'carrot-top');
 		currentCarrot.body.angularVelocity = -180;
 		currentCarrot.body.velocity.y = -200;
 		currentCarrot.body.velocity.x = scrollSpeed - 10;
